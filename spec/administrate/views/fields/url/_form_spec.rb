@@ -8,6 +8,7 @@ describe "fields/url/_form", type: :view do
       "Administrate::Field::Url",
       attribute: :image_url,
       data: nil,
+      required: false
     )
 
     render(

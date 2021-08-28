@@ -1,25 +1,22 @@
 require "rails_helper"
-require "administrate/field/select"
+require "administrate/field/string"
 
 describe "fields/select/_form", type: :view do
-  it "displays the selected option" do
+  it "sets required attribute if required" do
     customer = build(:customer)
-    select = instance_double(
-      "Administrate::Field::Select",
-      attribute: :email_subscriber,
-      data: false,
-      selectable_options: [true, false, nil],
-      required?: false
+    string = instance_double(
+      "Administrate::Field::String",
+      attribute: :name,
+      required?: true
     )
 
     render(
-      partial: "fields/select/form",
-      locals: { field: select, f: form_builder(customer) },
+      partial: "fields/string/form",
+      locals: { field: string, f: form_builder(customer) },
     )
 
     expect(rendered).to have_css(
-      %{select[name="customer[email_subscriber]"]
-        option[value="false"][selected="selected"]},
+      %{input[type=text][required=required]}
     )
   end
 

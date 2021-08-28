@@ -19,5 +19,5 @@ By default, the input is a text box.
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
-  <%= f.url_field field.attribute %>
+  <%= f.url_field field.attribute, required: field.required? %>
 </div>
